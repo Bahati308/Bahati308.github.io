@@ -46,6 +46,16 @@
     text-decoration: underline;
   }
   
+
+/* Add this to style nav-link */
+.nav-link {
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #00bcd4; /* Change color when hovering */
+  }
+  
   .hero {
     text-align: center;
     margin: 2rem 0;
