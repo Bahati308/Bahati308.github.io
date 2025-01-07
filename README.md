@@ -1,7 +1,6 @@
-# Bahati308.github.io
-#BRIAN PATRICK BAHATI
+# BRIAN PATRICK BAHATI
 
-Open-Source Developer | Cybersecurity Enthusiast | Ethical Hacker
+# Open-Source Developer | Cybersecurity Enthusiast | Ethical Hacker
 
 I am a passionate open-source developer with a strong foundation in cybersecurity, ethical hacking, and computer networking. With a keen interest in computer science, I thrive on creating innovative solutions that enhance security and usability for diverse systems.
 
