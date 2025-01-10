@@ -3230,6 +3230,7 @@ img.u-pull-left {
 
 .intro-social li {
     padding : 0 1.2rem;
+    border-radius: 5px;
 }
 
 .intro-social a {
