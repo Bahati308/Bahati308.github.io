@@ -3216,7 +3216,7 @@ img.u-pull-left {
     list-style       : none;
     display          : flex;
     font-size        : 1.5rem;
-    font-weight      : 400;
+    font-weight      : 350;
     text-transform   : uppercase;
     letter-spacing   : .3em;
     margin           : 0;
@@ -3224,7 +3224,7 @@ img.u-pull-left {
     transform        : rotate(-90deg) translateX(-50%);
     transform-origin : left bottom;
     position         : absolute;
-    top              : 50%;
+    top              : 40%;
     left             : calc(100% - 6rem);
 }
 
