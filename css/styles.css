@@ -3215,7 +3215,7 @@ img.u-pull-left {
     z-index          : 1;
     list-style       : none;
     display          : flex;
-    font-size        : 1rem;
+    font-size        : 3rem;
     font-weight      : 400;
     text-transform   : uppercase;
     letter-spacing   : .3em;
@@ -3230,7 +3230,6 @@ img.u-pull-left {
 
 .intro-social li {
     padding : 0 1.2rem;
-    border-radius: 5px;
 }
 
 .intro-social a {
