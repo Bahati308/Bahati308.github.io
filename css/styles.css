@@ -1556,6 +1556,7 @@ hr.fancy::before {
     font-size   : var(--text-md);
     line-height : var(--vspace-1_25);
     color       : var(--color-text-dark);
+    font-style:italic;
 }
 
 .pull-quote {
