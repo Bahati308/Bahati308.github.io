@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+/* Canvas should cover the viewport */
+.sky {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+/* Section spacing helpers */
+.panel {
+  @apply max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-10 sm:py-12 md:py-16;
+}
+.panel__actions {
+  @apply mt-4 flex gap-3 flex-wrap;
+}
+.btn {
+  @apply inline-flex items-center justify-center px-5 py-2.5 rounded-md text-sm font-semibold tracking-wide bg-slate-800 text-sky-300 hover:bg-white hover:text-black transition;
+}
+.btn--stroke {
+  @apply bg-transparent border border-slate-300 text-slate-200 hover:bg-white hover:text-black;
+}
+
+.ui {
+  @apply fixed top-0 left-0 right-0 flex items-center justify-between px-4 sm:px-6 py-3 bg-gradient-to-b from-black/40 to-transparent pointer-events-none select-none;
+}
+.ui * { pointer-events: auto; }
+.ui__nav { @apply flex flex-wrap gap-2 sm:gap-4 overflow-x-auto; }
+.ui__link { @apply text-xs uppercase tracking-wider text-slate-300 hover:text-sky-300; }
+.ui__stats { @apply flex gap-4 text-slate-200; }
+
+/* Content should render above the sky canvas */
+.content { position: relative; z-index: 1; }
+
+.footer {
+  @apply py-10 text-center text-slate-400;
+}
+
+/* Moon chatbot styles */
+.moon {
+  width: 72px;
+  height: 72px;
+  border-radius: 9999px;
+  background:
+    radial-gradient(35px 35px at 40% 40%, rgba(255,255,255,0.9), rgba(255,255,255,0.7) 60%, rgba(255,255,255,0.2) 100%),
+    radial-gradient(8px 8px at 60% 65%, rgba(200,200,200,0.35), transparent 70%),
+    radial-gradient(5px 5px at 35% 70%, rgba(210,210,210,0.35), transparent 70%),
+    radial-gradient(6px 6px at 58% 32%, rgba(220,220,220,0.35), transparent 70%),
+    radial-gradient(100px 100px at 50% 50%, #f4f4f5, #d4d4d8 70%, #a1a1aa 100%);
+  box-shadow:
+    0 0 30px rgba(255, 255, 200, 0.25),
+    inset -8px -10px 16px rgba(0,0,0,0.12);
+}
+.chat-card {
+  backdrop-filter: blur(8px);
+}
+
