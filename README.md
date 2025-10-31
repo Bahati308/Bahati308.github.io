@@ -1,15 +1,77 @@
-# BRIAN PATRICK BAHATI
+Night Sky — React + Vite + Tailwind
 
-# Open-Source Developer | Cybersecurity Enthusiast | Ethical Hacker
+An interactive night sky rendered on a canvas: knockable stars, periodic shooting-star commits, orbiting planets with moons, and a rising sun at daybreak. Built with React, Vite, and Tailwind CSS.
 
-I am a passionate open-source developer with a strong foundation in cybersecurity, ethical hacking, and computer networking. With a keen interest in computer science, I thrive on creating innovative solutions that enhance security and usability for diverse systems.
 
-My journey in the tech world began with a fascination for securing digital environments and has evolved into a commitment to building robust, scalable, and open-source technologies. I specialize in:
+Features
 
-    Identifying vulnerabilities and implementing secure coding practices.
-    Designing and deploying resilient networking architectures.
-    Contributing to collaborative open-source projects that address real-world challenges.
+- Stars: Tap or drag to nudge nearby stars; they move with inertia and bounce at edges.
+- Commits (shooting stars): Periodic streaks; spawn instantly with the Commit button.
+- Planets and moons: Bodies orbit the center at different radii and speeds.
+- Sun / Daybreak: Toggle daybreak to raise the sun and warm the horizon gradient.
 
-Beyond coding and security, I am driven by a desire to continuously learn and explore new frontiers in computer science. From developing tools to automate security assessments to contributing to community-driven tech initiatives, I aim to leave a meaningful impact in the industry.
 
-In my free time, you’ll find me singing, reading and travelling, making alot of effort to make the moments worth enjoying.
+Tech Stack
+
+- React 18
+- Vite 5
+- Tailwind CSS 3
+
+
+Getting Started
+
+1) Install dependencies
+
+    npm install
+
+2) Start the dev server
+
+    npm run dev
+
+The app will open on http://localhost:5173.
+
+
+Available Scripts
+
+- Development:
+
+    npm run dev
+
+- Production build:
+
+    npm run build
+
+- Preview production build locally:
+
+    npm run preview
+
+
+Project Structure
+
+- index.html — Vite entry mounting React.
+- src/main.jsx — React bootstrap.
+- src/App.jsx — Canvas simulation and UI sections.
+- src/index.css — Tailwind directives and utility-based styles.
+- tailwind.config.js — Tailwind content scanning and theme extensions.
+- postcss.config.js — Tailwind + autoprefixer pipeline.
+- vite.config.js — Vite config with React plugin.
+
+
+Usage Notes
+
+- Interaction: Click/drag inside the canvas to push stars.
+- Buttons: Add Stars, Clear, Commit (☄︎), Toggle Daybreak control the scene.
+
+
+Deploying (GitHub Pages)
+
+1) Build the site:
+
+    npm run build
+
+2) Serve the contents of the dist directory with GitHub Pages (e.g., push dist to a gh-pages branch or configure your hosting to serve dist/).
+
+
+License
+
+MIT
