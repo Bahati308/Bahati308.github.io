@@ -360,22 +360,162 @@ export default function App() {
     }
   }, [autoScroll, daybreak])
 
+  const [navOpen, setNavOpen] = useState(false)
+
   return (
     <div className="min-h-screen text-slate-100 relative">
-      <canvas ref={canvasRef} className="sky" />
+      <a
+        href="#intro"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-sky-600 focus:text-white focus:rounded-lg"
+      >
+        Skip to main content
+      </a>
+      <canvas ref={canvasRef} className="sky" aria-hidden="true" />
+
+      {/* Navigation Menu */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <a
+              href="#intro"
+              className="text-xl font-semibold text-sky-200 hover:text-sky-100 transition-colors"
+            >
+              Brian P. Bahati
+            </a>
+            <div className="hidden md:flex items-center gap-6">
+              <a
+                href="#about"
+                className="text-slate-300 hover:text-sky-200 transition-colors"
+                aria-label="Navigate to About section"
+              >
+                About
+              </a>
+              <a
+                href="#projects"
+                className="text-slate-300 hover:text-sky-200 transition-colors"
+                aria-label="Navigate to Projects section"
+              >
+                Projects
+              </a>
+              <a
+                href="#experience"
+                className="text-slate-300 hover:text-sky-200 transition-colors"
+                aria-label="Navigate to Experience section"
+              >
+                Experience
+              </a>
+              <a
+                href="#services"
+                className="text-slate-300 hover:text-sky-200 transition-colors"
+                aria-label="Navigate to Services section"
+              >
+                Services
+              </a>
+              <a
+                href="#appointment"
+                className="text-slate-300 hover:text-sky-200 transition-colors"
+                aria-label="Navigate to Book Appointment section"
+              >
+                Book Appointment
+              </a>
+              <a
+                href="#contact"
+                className="btn btn--stroke"
+                aria-label="Navigate to Contact section"
+              >
+                Contact
+              </a>
+            </div>
+            <button
+              className="md:hidden text-slate-300 hover:text-sky-200"
+              onClick={() => setNavOpen(!navOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={navOpen}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {navOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+        {navOpen && (
+          <div className="md:hidden border-t border-white/10 bg-black/60 backdrop-blur-md">
+            <div className="px-4 py-4 space-y-3">
+              <a
+                href="#about"
+                className="block text-slate-300 hover:text-sky-200 transition-colors"
+                onClick={() => setNavOpen(false)}
+              >
+                About
+              </a>
+              <a
+                href="#projects"
+                className="block text-slate-300 hover:text-sky-200 transition-colors"
+                onClick={() => setNavOpen(false)}
+              >
+                Projects
+              </a>
+              <a
+                href="#experience"
+                className="block text-slate-300 hover:text-sky-200 transition-colors"
+                onClick={() => setNavOpen(false)}
+              >
+                Experience
+              </a>
+              <a
+                href="#services"
+                className="block text-slate-300 hover:text-sky-200 transition-colors"
+                onClick={() => setNavOpen(false)}
+              >
+                Services
+              </a>
+              <a
+                href="#appointment"
+                className="block text-slate-300 hover:text-sky-200 transition-colors"
+                onClick={() => setNavOpen(false)}
+              >
+                Book Appointment
+              </a>
+              <a
+                href="#contact"
+                className="block btn btn--stroke w-full text-center"
+                onClick={() => setNavOpen(false)}
+              >
+                Contact
+              </a>
+            </div>
+          </div>
+        )}
+      </nav>
+
       <button
         className={`bulb-toggle btn-bulb ${daybreak ? 'is-on' : ''}`}
         onClick={() => setDaybreak((prev) => !prev)}
-        aria-label="Toggle night and water daylight mode"
+        aria-label="Toggle night and daylight mode"
         aria-pressed={daybreak}
         type="button"
       >
-        <span className="sr-only">Toggle night and water daylight mode</span>
+        <span className="sr-only">Toggle night and daylight mode</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           className={`h-6 w-6 ${daybreak ? 'text-gray-900' : 'text-sky-200'}`}
           fill="currentColor"
+          aria-hidden="true"
         >
           <path d="M9 21h6v-1H9v1Zm1-2h4v-1h-4v1Zm8-9a6 6 0 0 0-3-5.196V2h-2v2h-2V2H9v2.804A6 6 0 0 0 12 15a6 6 0 0 0 6-6Zm-6 5a5 5 0 0 1-2.5-9.35v.91h5v-.91A5 5 0 0 1 12 15Z" />
         </svg>
@@ -393,59 +533,346 @@ export default function App() {
       )}
 
       <div className={`content ${daybreak ? 'marine' : ''}`}>
-        <section className="panel space-panel" id="intro">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-3">
+        <section className="panel space-panel" id="intro" aria-labelledby="intro-heading">
+          <h1 id="intro-heading" className="text-3xl sm:text-4xl md:text-5xl font-serif mb-3">
             Brian Patrick Bahati
-            <span className="block text-lg font-normal tracking-wide text-sky-300">
-              {daybreak
-                ? 'Daylight focus — strategy, clarity, outreach.'
-                : 'Night sky mode — security, depth, resilience.'}
-            </span>
           </h1>
           <p className="text-slate-300 max-w-3xl">
-            Cybersecurity professional, ethical hacker, and web developer. I build secure web
-            applications, contribute to open source, and mentor developers.
+            Software Engineer specializing in secure, scalable applications and open-source
+            development. I design and build robust systems with a focus on security, performance,
+            and maintainability.
             {daybreak
-              ? ' In daylight mode the focus shifts to planning, presentations, and clear delivery.'
-              : ' Under the stars I emphasize exploration, security hardening, and deep technical problem solving.'}
+              ? ' In daylight mode, I focus on strategic planning, clear communication, and delivering high-quality solutions.'
+              : ' Under the stars, I emphasize deep technical exploration, security-first architecture, and innovative problem-solving.'}
           </p>
           <div className="panel__actions">
-            <a className="btn" href="https://github.com/Bahati308" target="_blank" rel="noreferrer">
-              GitHub
+            <a
+              className="btn"
+              href="https://github.com/Bahati308"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit my GitHub profile"
+            >
+              View GitHub
             </a>
-            <a className="btn btn--stroke" href="mailto:bahatibrianp@gmail.com">
-              Contact
+            <a
+              className="btn btn--stroke"
+              href="mailto:bahatibrianp@gmail.com"
+              aria-label="Send me an email"
+            >
+              Get In Touch
+            </a>
+            <a className="btn btn--stroke" href="#projects" aria-label="View my projects">
+              View Projects
             </a>
           </div>
         </section>
 
-        <section className="panel space-panel" id="about">
-          <h2 className="text-2xl sm:text-3xl font-serif mb-3">About</h2>
-          <p className="text-slate-300 max-w-3xl">
-            I am a professional web developer and ethical hacker with a passion for cybersecurity
-            and open-source collaboration. I focus on clean architecture, secure coding, and
-            practical problem solving.
+        <section className="panel space-panel" id="about" aria-labelledby="about-heading">
+          <h2 id="about-heading" className="text-2xl sm:text-3xl font-serif mb-3">
+            About
+          </h2>
+          <p className="text-slate-300 max-w-3xl mb-4">
+            I am a Software Engineer with expertise in building secure, scalable applications and
+            contributing to open-source projects. My approach combines clean architecture
+            principles, security-first development practices, and pragmatic problem-solving. With
+            professional certifications in Ethical Hacking, CyberOps, and CCNA, I bring a
+            comprehensive understanding of both software engineering and cybersecurity to deliver
+            robust, production-ready solutions.
           </p>
-          <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-200">
-            <li>Cybersecurity</li>
-            <li>Networking</li>
-            <li>Ethical Hacking</li>
-            <li>Web Development</li>
-            <li>Open Source</li>
-            <li>Linux</li>
-          </ul>
+          <p className="text-slate-300 max-w-3xl mb-6">
+            I specialize in full-stack development with a focus on creating maintainable codebases,
+            implementing security best practices, and collaborating effectively within distributed
+            teams. My experience includes contributing to large-scale open-source healthcare systems
+            that serve millions of users worldwide.
+          </p>
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-3">Technical Expertise</h3>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-200">
+              <li className="flex items-center gap-2">
+                <span className="text-sky-300">•</span> Full-Stack Software Development
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-sky-300">•</span> Secure Software Architecture
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-sky-300">•</span> System Design & Scalability
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-sky-300">•</span> Cybersecurity & Application Security
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-sky-300">•</span> Open Source Development
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-sky-300">•</span> Network Infrastructure & Security
+              </li>
+            </ul>
+          </div>
+          <div className="panel__actions">
+            <a
+              className="btn btn--stroke"
+              href="mailto:bahatibrianp@gmail.com?subject=Resume Request"
+              aria-label="Request my resume"
+            >
+              Request Resume
+            </a>
+          </div>
+        </section>
+
+        <section className="panel space-panel" id="projects" aria-labelledby="projects-heading">
+          <h2 id="projects-heading" className="text-2xl sm:text-3xl font-serif mb-3">
+            Featured Projects
+          </h2>
+          <p className="text-slate-300 max-w-3xl mb-6">
+            Here are some of my key projects showcasing problem-solving, security-first development,
+            and open-source contributions.
+          </p>
+          <div className="space-y-6">
+            {/* OpenELIS Project */}
+            <article className="rounded-lg border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <h3 className="text-xl font-semibold text-sky-300 mb-1">
+                    OpenELIS — Laboratory Information System
+                  </h3>
+                  <p className="text-slate-400 text-sm">
+                    June 2024 – Present | Open Source Contributor
+                  </p>
+                </div>
+                <a
+                  href="https://github.com/openelisglobal/openelisglobal-core"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sky-300 hover:text-sky-200 transition-colors"
+                  aria-label="View OpenELIS on GitHub"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
+              </div>
+              <div className="space-y-3">
+                <div>
+                  <h4 className="font-semibold text-slate-200 mb-1">Problem</h4>
+                  <p className="text-slate-300 text-sm">
+                    Medical laboratories needed a robust, open-source information system to manage
+                    patient data, test results, and workflows efficiently while maintaining security
+                    and compliance standards.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-200 mb-1">Process</h4>
+                  <p className="text-slate-300 text-sm">
+                    Contributing to OpenELIS as part of Google Summer of Code 2025, I work with
+                    global teams to develop features, improve system architecture, and enhance
+                    security measures. Focus areas include secure data handling, API development,
+                    and workflow optimization.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-200 mb-1">Solution & Impact</h4>
+                  <p className="text-slate-300 text-sm">
+                    Developed and maintained features that streamline medical workflows, improve
+                    data accuracy, and enhance system security. The platform now serves laboratories
+                    worldwide, improving healthcare delivery through better information management.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="px-2 py-1 text-xs rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    Java
+                  </span>
+                  <span className="px-2 py-1 text-xs rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    Spring Framework
+                  </span>
+                  <span className="px-2 py-1 text-xs rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    Security
+                  </span>
+                  <span className="px-2 py-1 text-xs rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    Open Source
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            {/* OpenMRS Project */}
+            <article className="rounded-lg border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <h3 className="text-xl font-semibold text-sky-300 mb-1">
+                    OpenMRS — Medical Records System
+                  </h3>
+                  <p className="text-slate-400 text-sm">2021 – Present | Community Contributor</p>
+                </div>
+                <a
+                  href="https://github.com/openmrs"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sky-300 hover:text-sky-200 transition-colors"
+                  aria-label="View OpenMRS on GitHub"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
+              </div>
+              <div className="space-y-3">
+                <div>
+                  <h4 className="font-semibold text-slate-200 mb-1">Problem</h4>
+                  <p className="text-slate-300 text-sm">
+                    Healthcare facilities in resource-limited settings needed a free, open-source
+                    medical records system that could be customized for local needs while
+                    maintaining patient data security.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-200 mb-1">Process</h4>
+                  <p className="text-slate-300 text-sm">
+                    Collaborated with a global community of developers, healthcare professionals,
+                    and implementers to develop features, fix bugs, improve documentation, and
+                    enhance system security. Participated in code reviews, issue triage, and
+                    community discussions.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-200 mb-1">Solution & Impact</h4>
+                  <p className="text-slate-300 text-sm">
+                    Contributed to features and improvements that help OpenMRS serve millions of
+                    patients worldwide. Enhanced system reliability, security, and usability through
+                    code contributions and community engagement.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="px-2 py-1 text-xs rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    Java
+                  </span>
+                  <span className="px-2 py-1 text-xs rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    Healthcare IT
+                  </span>
+                  <span className="px-2 py-1 text-xs rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    Open Source
+                  </span>
+                  <span className="px-2 py-1 text-xs rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    Community
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            {/* Portfolio Website Project */}
+            <article className="rounded-lg border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <h3 className="text-xl font-semibold text-sky-300 mb-1">
+                    Interactive Portfolio Website
+                  </h3>
+                  <p className="text-slate-400 text-sm">2024 | Personal Project</p>
+                </div>
+                <a
+                  href="https://github.com/Bahati308/Bahati308.github.io"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sky-300 hover:text-sky-200 transition-colors"
+                  aria-label="View portfolio source code on GitHub"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
+              </div>
+              <div className="space-y-3">
+                <div>
+                  <h4 className="font-semibold text-slate-200 mb-1">Problem</h4>
+                  <p className="text-slate-300 text-sm">
+                    Needed a professional portfolio that showcases technical skills while providing
+                    an engaging, accessible user experience that stands out from typical portfolio
+                    sites.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-200 mb-1">Process</h4>
+                  <p className="text-slate-300 text-sm">
+                    Built a responsive, interactive portfolio using React, Vite, and Tailwind CSS.
+                    Implemented a unique night sky theme with canvas-based animations, dark/light
+                    mode toggle, and an accessible chatbot interface. Focused on performance
+                    optimization and SEO best practices.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-200 mb-1">Solution & Impact</h4>
+                  <p className="text-slate-300 text-sm">
+                    Created a visually striking portfolio that demonstrates both technical and
+                    creative skills. The site features smooth animations, responsive design, and
+                    accessibility features, effectively communicating professional capabilities to
+                    potential clients and employers.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="px-2 py-1 text-xs rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    React
+                  </span>
+                  <span className="px-2 py-1 text-xs rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    Vite
+                  </span>
+                  <span className="px-2 py-1 text-xs rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    Tailwind CSS
+                  </span>
+                  <span className="px-2 py-1 text-xs rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    Canvas API
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
         </section>
 
         <section className="panel space-panel" id="blog">
-          <h2 className="text-2xl sm:text-3xl font-serif mb-3">Blog</h2>
+          <h2 className="text-2xl sm:text-3xl font-serif mb-3">Blog & Articles</h2>
           <div className="space-y-4">
-            <article className="rounded-md border border-white/10 p-4 bg-white/5">
-              <h3 className="text-xl font-semibold">GSoC 2025 — OpenELIS</h3>
-              <p className="text-slate-300">Community bonding and ramp-up notes.</p>
+            <article className="rounded-md border border-white/10 p-4 bg-white/5 hover:bg-white/10 transition-colors">
+              <h3 className="text-xl font-semibold mb-2">GSoC 2025 — OpenELIS</h3>
+              <p className="text-slate-300 mb-2">
+                Community bonding and ramp-up notes from Google Summer of Code 2025.
+              </p>
+              <a href="#blog" className="text-sky-300 hover:text-sky-200 text-sm">
+                Read more →
+              </a>
             </article>
-            <article className="rounded-md border border-white/10 p-4 bg-white/5">
-              <h3 className="text-xl font-semibold">Secure Web Development</h3>
-              <p className="text-slate-300">Essential practices to avoid common vulnerabilities.</p>
+            <article className="rounded-md border border-white/10 p-4 bg-white/5 hover:bg-white/10 transition-colors">
+              <h3 className="text-xl font-semibold mb-2">Secure Web Development Practices</h3>
+              <p className="text-slate-300 mb-2">
+                Essential practices to avoid common vulnerabilities and build secure applications.
+              </p>
+              <a href="#blog" className="text-sky-300 hover:text-sky-200 text-sm">
+                Read more →
+              </a>
             </article>
           </div>
         </section>
@@ -468,30 +895,50 @@ export default function App() {
           </div>
         </section>
 
-        <section className="panel space-panel" id="experience">
-          <h2 className="text-2xl sm:text-3xl font-serif mb-3">Experience</h2>
+        <section className="panel space-panel" id="experience" aria-labelledby="experience-heading">
+          <h2 id="experience-heading" className="text-2xl sm:text-3xl font-serif mb-3">
+            Experience
+          </h2>
           <div className="space-y-6">
-            <div className="border-l-2 border-white/20 pl-4">
-              <h3 className="font-semibold">OpenMRS — Community Contributor</h3>
-              <p className="text-slate-300 text-sm">2021 – Present</p>
-              <p className="text-slate-300 mt-2">
-                Collaborated with global teams to develop features, resolve issues, and improve
-                documentation.
-              </p>
-            </div>
-            <div className="border-l-2 border-white/20 pl-4">
-              <h3 className="font-semibold">OpenELIS — Developer</h3>
-              <p className="text-slate-300 text-sm">June 2024 – Present</p>
-              <p className="text-slate-300 mt-2">
+            <div className="border-l-2 border-sky-500/50 pl-4">
+              <h3 className="font-semibold text-lg">OpenELIS — Developer</h3>
+              <p className="text-slate-300 text-sm mb-2">June 2024 – Present</p>
+              <p className="text-slate-300 mb-3">
                 Contributing to an open-source laboratory information system to streamline medical
-                workflows.
+                workflows and improve healthcare delivery in resource-limited settings.
               </p>
+              <ul className="text-slate-300 text-sm space-y-1 list-disc list-inside">
+                <li>
+                  Developed and maintained features improving system reliability and user experience
+                </li>
+                <li>Enhanced security measures for sensitive medical data handling</li>
+                <li>Participated in Google Summer of Code 2025 program</li>
+                <li>
+                  Collaborated with international team of developers and healthcare professionals
+                </li>
+              </ul>
+            </div>
+            <div className="border-l-2 border-sky-500/50 pl-4">
+              <h3 className="font-semibold text-lg">OpenMRS — Community Contributor</h3>
+              <p className="text-slate-300 text-sm mb-2">2021 – Present</p>
+              <p className="text-slate-300 mb-3">
+                Active contributor to OpenMRS, a global open-source medical records platform serving
+                millions of patients worldwide.
+              </p>
+              <ul className="text-slate-300 text-sm space-y-1 list-disc list-inside">
+                <li>Contributed code improvements, bug fixes, and feature enhancements</li>
+                <li>Improved documentation and developer onboarding materials</li>
+                <li>Participated in code reviews and community discussions</li>
+                <li>Mentored new contributors and helped grow the community</li>
+              </ul>
             </div>
           </div>
         </section>
 
-        <section className="panel space-panel" id="services">
-          <h2 className="text-2xl sm:text-3xl font-serif mb-3">Services Offered</h2>
+        <section className="panel space-panel" id="services" aria-labelledby="services-heading">
+          <h2 id="services-heading" className="text-2xl sm:text-3xl font-serif mb-3">
+            Services Offered
+          </h2>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             <article className="rounded-lg border border-white/10 bg-white/10 backdrop-blur px-5 py-5">
               <h3 className="text-xl font-semibold text-sky-300">Web Designing</h3>
@@ -517,77 +964,178 @@ export default function App() {
           </div>
         </section>
 
-        <section className="panel space-panel" id="testimonials">
-          <h2 className="text-2xl sm:text-3xl font-serif mb-3">Testimonials</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <blockquote className="rounded-md border border-white/10 bg-white/5 p-4">
-              <p className="text-slate-200">
-                “In programming, the real challenge is not just writing code that works, but writing
-                code that’s clean, efficient, and scalable.”
+        <section
+          className="panel space-panel"
+          id="appointment"
+          aria-labelledby="appointment-heading"
+        >
+          <h2 id="appointment-heading" className="text-2xl sm:text-3xl font-serif mb-3">
+            Book an Appointment
+          </h2>
+          <p className="text-slate-300 max-w-3xl mb-6">
+            Schedule a consultation to discuss your project, explore collaboration opportunities, or
+            get expert advice on software engineering, security, or open-source development. Choose
+            a time that works best for you.
+          </p>
+          <div className="grid gap-6 md:grid-cols-2 mb-6">
+            <div className="rounded-lg border border-white/10 bg-white/5 p-6">
+              <h3 className="text-xl font-semibold text-sky-300 mb-3">Consultation Options</h3>
+              <ul className="space-y-3 text-slate-300">
+                <li className="flex items-start gap-3">
+                  <span className="text-sky-300 mt-1">•</span>
+                  <div>
+                    <span className="font-semibold">Project Consultation</span>
+                    <p className="text-sm text-slate-400">
+                      Discuss your software project requirements and get expert guidance
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-sky-300 mt-1">•</span>
+                  <div>
+                    <span className="font-semibold">Technical Review</span>
+                    <p className="text-sm text-slate-400">
+                      Code review, architecture consultation, or security assessment
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-sky-300 mt-1">•</span>
+                  <div>
+                    <span className="font-semibold">Career Guidance</span>
+                    <p className="text-sm text-slate-400">
+                      Advice on software engineering careers, certifications, and skill development
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-sky-300 mt-1">•</span>
+                  <div>
+                    <span className="font-semibold">Open Source Collaboration</span>
+                    <p className="text-sm text-slate-400">
+                      Discuss contributing to open-source projects or starting your own
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="rounded-lg border border-white/10 bg-white/5 p-6">
+              <h3 className="text-xl font-semibold text-sky-300 mb-3">Schedule Your Meeting</h3>
+              <p className="text-slate-300 mb-4 text-sm">
+                Use the booking link below to select your preferred date and time. Meetings are
+                typically 30-60 minutes and can be conducted via video call or in-person (when
+                available).
               </p>
-              <div className="mt-3 text-slate-400 text-sm">— Linus Torvalds</div>
-            </blockquote>
-            <blockquote className="rounded-md border border-white/10 bg-white/5 p-4">
-              <p className="text-slate-200">
-                “Code isn't just lines of text—it's the architecture of our future.”
-              </p>
-              <div className="mt-3 text-slate-400 text-sm">— Edward Snowden</div>
-            </blockquote>
-            <blockquote className="rounded-md border border-white/10 bg-white/5 p-4">
-              <p className="text-slate-200">
-                “Computers are more than machines; they are the gateways to innovation.”
-              </p>
-              <div className="mt-3 text-slate-400 text-sm">— Brian P. Bahati</div>
-            </blockquote>
-            <blockquote className="rounded-md border border-white/10 bg-white/5 p-4">
-              <p className="text-slate-200">
-                “The only way to do great work is to love what you do.”
-              </p>
-              <div className="mt-3 text-slate-400 text-sm">— Steve Jobs</div>
-            </blockquote>
+              <div className="space-y-3">
+                <a
+                  href="https://calendly.com/brian-bahati"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn block text-center"
+                  aria-label="Book an appointment via Calendly"
+                >
+                  Book via Calendly
+                </a>
+                <a
+                  href="mailto:bahatibrianp@gmail.com?subject=Appointment Request&body=Hi Brian,%0D%0A%0D%0AI would like to schedule an appointment. Please let me know your availability.%0D%0A%0D%0APreferred date/time:%0D%0ATopic:%0D%0A%0D%0AThank you!"
+                  className="btn btn--stroke block text-center"
+                  aria-label="Request appointment via email"
+                >
+                  Request via Email
+                </a>
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <p className="text-xs text-slate-400">
+                  <strong className="text-slate-300">Note:</strong> If you don't see available times
+                  that work for you, please email me directly and I'll do my best to accommodate
+                  your schedule.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section className="panel space-panel" id="stars">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-3">Knock The Stars</h1>
-          <p className="text-slate-300 max-w-2xl">
-            Tap or drag to nudge nearby stars. They glide and gently collide.
+        <section className="panel space-panel" id="contact" aria-labelledby="contact-heading">
+          <h2 id="contact-heading" className="text-2xl sm:text-3xl font-serif mb-3">
+            Let's Connect
+          </h2>
+          <p className="text-slate-300 max-w-3xl mb-6">
+            I'm always open to discussing new opportunities, collaborations, or answering questions
+            about software engineering, security, or open-source contributions. Feel free to reach
+            out!
           </p>
-        </section>
-
-        <section className="panel space-panel" id="commits">
-          <h2 className="text-2xl sm:text-3xl font-serif mb-3">Shooting-Star Commits</h2>
-          <p className="text-slate-300 max-w-2xl">
-            Commits streak across the sky periodically. Click to spawn one.
-          </p>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-6">
+            <a
+              href="mailto:bahatibrianp@gmail.com"
+              className="rounded-lg border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition-colors"
+              aria-label="Send me an email"
+            >
+              <h3 className="font-semibold text-sky-300 mb-2">Email</h3>
+              <p className="text-slate-300 text-sm">bahatibrianp@gmail.com</p>
+            </a>
+            <a
+              href="https://github.com/Bahati308"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-lg border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition-colors"
+              aria-label="Visit my GitHub profile"
+            >
+              <h3 className="font-semibold text-sky-300 mb-2">GitHub</h3>
+              <p className="text-slate-300 text-sm">@Bahati308</p>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/brian-patrick-bahati"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-lg border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition-colors"
+              aria-label="Visit my LinkedIn profile"
+            >
+              <h3 className="font-semibold text-sky-300 mb-2">LinkedIn</h3>
+              <p className="text-slate-300 text-sm">brian-patrick-bahati</p>
+            </a>
+            <a
+              href="mailto:bahatibrianp@gmail.com?subject=Resume Request"
+              className="rounded-lg border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition-colors"
+              aria-label="Request my resume"
+            >
+              <h3 className="font-semibold text-sky-300 mb-2">Resume</h3>
+              <p className="text-slate-300 text-sm">Available upon request</p>
+            </a>
+          </div>
           <div className="panel__actions">
-            <button className="btn" onClick={commitNow}>
-              Commit (☄︎)
-            </button>
+            <a
+              className="btn"
+              href="mailto:bahatibrianp@gmail.com?subject=Project Inquiry"
+              aria-label="Send me a project inquiry"
+            >
+              Start a Project
+            </a>
+            <a
+              className="btn btn--stroke"
+              href="https://github.com/Bahati308"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="View my GitHub profile"
+            >
+              View GitHub
+            </a>
           </div>
         </section>
 
-        <section className="panel space-panel" id="sun">
-          <h2 className="text-2xl sm:text-3xl font-serif mb-3">The Sun</h2>
-          <p className="text-slate-300 max-w-2xl">
-            {daybreak
-              ? 'Sun is up: a clean white canvas that keeps attention on content, planning, and communication.'
-              : 'Sun is down: stars come alive with depth, keeping the night focused on secure engineering.'}
+        <footer className="footer" role="contentinfo">
+          <p className="text-sm text-slate-500">
+            © {new Date().getFullYear()} Brian Patrick Bahati. All rights reserved.
           </p>
-        </section>
-
-        <footer className="footer">
-          <span className="block">Night Sky • React + Vite + Tailwind</span>
-          <span className="block">Click, drag, and enjoy</span>
         </footer>
       </div>
 
       {/* Floating full-moon chatbot */}
       <button
-        aria-label="Open moon chat"
+        aria-label="Open moon chat assistant"
         className="fixed bottom-6 right-6 moon border border-white/10 z-50"
         onClick={() => setChatOpen(true)}
-        title="Chat with the Moon"
+        title="Chat with the Moon - Ask questions about Brian, IT careers, or skills"
+        type="button"
       />
 
       {chatOpen && (
