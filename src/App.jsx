@@ -207,7 +207,10 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-blue/10 via-white to-gold/10 pt-16">
+      <section
+        id="hero"
+        className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-blue/10 via-white to-gold/10 pt-16"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8">
             <img
@@ -253,8 +256,8 @@ export default function App() {
           </h2>
           <div className="max-w-3xl mx-auto">
             <p className="text-lg text-gray-600 mb-4">
-              I am a Software Engineer with expertise in building secure, scalable applications
-              and contributing to open-source projects. My approach combines clean architecture
+              I am a Software Engineer with expertise in building secure, scalable applications and
+              contributing to open-source projects. My approach combines clean architecture
               principles, security-first development practices, and pragmatic problem-solving.
             </p>
             <p className="text-lg text-gray-600 mb-4">
@@ -473,7 +476,8 @@ export default function App() {
                     } else {
                       setFormStatus({
                         type: 'error',
-                        message: 'Oops! Something went wrong. Please try again or email me directly.',
+                        message:
+                          'Oops! Something went wrong. Please try again or email me directly.',
                       })
                     }
                   } catch (error) {
@@ -530,10 +534,7 @@ export default function App() {
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                     Message <span className="text-red-500">*</span>
                   </label>
                   <textarea
@@ -561,7 +562,8 @@ export default function App() {
       <footer className="bg-gray-900 text-white py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-gray-400">
-            © {new Date().getFullYear()} Brian Patrick <span className="font-bold">Bahati</span>. All rights reserved.
+            © {new Date().getFullYear()} Brian Patrick <span className="font-bold">Bahati</span>.
+            All rights reserved.
           </p>
           <div className="mt-4 flex justify-center gap-4">
             <a

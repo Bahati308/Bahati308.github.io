@@ -39,6 +39,7 @@ A modern, clean, and professional Software Engineer portfolio website showcasing
 ## 🛠️ Getting Started
 
 1. **Install dependencies**
+
    ```bash
    npm install
    ```
@@ -62,6 +63,7 @@ A modern, clean, and professional Software Engineer portfolio website showcasing
 ### Netlify
 
 1. Build the site:
+
    ```bash
    npm run build
    ```
@@ -73,6 +75,7 @@ A modern, clean, and professional Software Engineer portfolio website showcasing
 ### GitHub Pages
 
 1. Build the site:
+
    ```bash
    npm run build
    ```

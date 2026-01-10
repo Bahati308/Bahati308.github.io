@@ -15,7 +15,11 @@ body,
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
   color: #1f2937;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -37,8 +41,13 @@ h6.font-display,
 }
 
 /* Body text styling */
-p, li {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+p,
+li {
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
   line-height: 1.7;
   letter-spacing: -0.01em;
 }
@@ -51,23 +60,23 @@ section {
 /* Button hover effects */
 .btn-primary {
   @apply px-6 py-3 text-white rounded-lg font-semibold transition-all duration-200;
-  background-color: #87CEEB;
+  background-color: #87ceeb;
 }
 
 .btn-primary:hover {
   @apply outline outline-2 shadow-lg;
   background-color: rgba(135, 206, 235, 0.9);
-  outline-color: #FFD700;
+  outline-color: #ffd700;
 }
 
 .btn-secondary {
   @apply px-6 py-3 bg-white border-2 rounded-lg font-semibold transition-all duration-200;
-  color: #87CEEB;
-  border-color: #87CEEB;
+  color: #87ceeb;
+  border-color: #87ceeb;
 }
 
 .btn-secondary:hover {
-  background-color: #87CEEB;
+  background-color: #87ceeb;
   color: white;
 }
 
@@ -111,7 +120,9 @@ textarea:focus {
 
 /* Card hover effects */
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .card-hover:hover {
