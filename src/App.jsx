@@ -1,9 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('hero')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [formStatus, setFormStatus] = useState({ type: '', message: '' })
+
+  // Custom cursor state
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
+  const [cursorHover, setCursorHover] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const cursorRef = useRef(null)
+  const rafRef = useRef(null)
 
   // Smooth scroll handler
   useEffect(() => {
@@ -31,6 +38,96 @@ export default function App() {
   const handleNavClick = () => {
     setIsMenuOpen(false)
   }
+
+  // Detect mobile/touch devices - disable cursor on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+      const isSmallScreen = window.innerWidth < 768
+      setIsMobile(isTouchDevice || isSmallScreen)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Custom cursor movement tracking
+  useEffect(() => {
+    if (isMobile) return
+
+    let rafId = null
+    let mouseX = 0
+    let mouseY = 0
+
+    const updateCursorPosition = () => {
+      setCursorPos({ x: mouseX, y: mouseY })
+      rafId = null
+    }
+
+    const handleMouseMove = (e) => {
+      mouseX = e.clientX
+      mouseY = e.clientY
+
+      if (!rafId) {
+        rafId = requestAnimationFrame(updateCursorPosition)
+      }
+    }
+
+    const handleMouseOver = (e) => {
+      const target = e.target
+      if (!target) return
+
+      const isInteractive =
+        target.tagName === 'A' ||
+        target.tagName === 'BUTTON' ||
+        target.closest('a') !== null ||
+        target.closest('button') !== null ||
+        target.closest('[role="button"]') !== null ||
+        (window.getComputedStyle(target).cursor === 'pointer' && target.tagName !== 'BODY')
+
+      setCursorHover(isInteractive)
+    }
+
+    const handleMouseOut = (e) => {
+      // Only reset if we're leaving the document or going to a non-interactive element
+      if (
+        !e.relatedTarget ||
+        e.relatedTarget === document.body ||
+        e.relatedTarget === document.documentElement
+      ) {
+        setCursorHover(false)
+      }
+    }
+
+    const handleClick = (e) => {
+      // Create ripple effect
+      const ripple = document.createElement('div')
+      ripple.className = 'cursor-ripple'
+      ripple.style.left = `${e.clientX}px`
+      ripple.style.top = `${e.clientY}px`
+      document.body.appendChild(ripple)
+
+      setTimeout(() => {
+        if (ripple.parentNode) {
+          ripple.remove()
+        }
+      }, 600)
+    }
+
+    // Use capture phase for better hover detection
+    document.addEventListener('mousemove', handleMouseMove, { passive: true })
+    document.addEventListener('mouseover', handleMouseOver, { capture: true, passive: true })
+    document.addEventListener('mouseout', handleMouseOut, { capture: true, passive: true })
+    document.addEventListener('click', handleClick, { passive: true })
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseover', handleMouseOver, { capture: true })
+      document.removeEventListener('mouseout', handleMouseOut, { capture: true })
+      document.removeEventListener('click', handleClick)
+      if (rafId) cancelAnimationFrame(rafId)
+    }
+  }, [isMobile])
 
   // Projects data
   const projects = [
@@ -94,6 +191,20 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Custom Cursor - Only on desktop */}
+      {!isMobile && (
+        <>
+          <div
+            ref={cursorRef}
+            className={`custom-cursor ${cursorHover ? 'cursor-hover' : ''}`}
+            style={{
+              left: `${cursorPos.x}px`,
+              top: `${cursorPos.y}px`,
+            }}
+            aria-hidden="true"
+          />
+        </>
+      )}
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
