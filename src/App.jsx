@@ -383,9 +383,9 @@ export default function App() {
             Physical Intelligence Engineer | Cybersecurity Professional
           </p>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Engineering intelligent, secure, and scalable systems with a strong foundation in software
-            development, cybersecurity, and AI-driven innovation. Passionate about quality assurance,
-            automation, and impactful open-source contributions.
+            Engineering intelligent, secure, and scalable systems with a strong foundation in
+            software development, cybersecurity, and AI-driven innovation. Passionate about quality
+            assurance, automation, and impactful open-source contributions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -412,22 +412,22 @@ export default function App() {
           </h2>
           <div className="max-w-3xl mx-auto">
             <p className="text-lg text-gray-600 mb-4">
-              I am a Bachelor of Engineering (B.E.) student in Robotics and Artificial Intelligence with a
-              strong background in software engineering and cybersecurity. My work focuses on building
-              secure, scalable, and maintainable systems, combining engineering discipline with emerging
-              AI technologies.
+              I am a Bachelor of Engineering (B.E.) student in Robotics and Artificial Intelligence
+              with a strong background in software engineering and cybersecurity. My work focuses on
+              building secure, scalable, and maintainable systems, combining engineering discipline
+              with emerging AI technologies.
             </p>
             <p className="text-lg text-gray-600 mb-4">
-              I apply security-first development practices, clean architecture principles, and pragmatic
-              problem-solving to real-world systems. Alongside my academic training in robotics and AI, I
-              actively contribute to open-source projects and large-scale software platforms, including
-              healthcare systems used by millions globally.
+              I apply security-first development practices, clean architecture principles, and
+              pragmatic problem-solving to real-world systems. Alongside my academic training in
+              robotics and AI, I actively contribute to open-source projects and large-scale
+              software platforms, including healthcare systems used by millions globally.
             </p>
             <p className="text-lg text-gray-600 mb-6">
               With professional certifications in Ethical Hacking, CyberOps, and CCNA, I bring a
               well-rounded perspective that bridges intelligent systems, software engineering, and
-              cybersecurity. I am particularly interested in secure AI systems, automation, and resilient
-              infrastructure for mission-critical applications.
+              cybersecurity. I am particularly interested in secure AI systems, automation, and
+              resilient infrastructure for mission-critical applications.
             </p>
             <div className="flex flex-wrap gap-3">
               <span className="px-4 py-2 bg-sky-blue/10 text-sky-blue rounded-full text-sm font-medium">
@@ -451,8 +451,8 @@ export default function App() {
             Blog
           </h2>
           <p className="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">
-            Sharing insights on Physical Intelligence, Automation, Cybersecurity, Ethical Hacking, and
-            Open Source contributions.
+            Sharing insights on Physical Intelligence, Automation, Cybersecurity, Ethical Hacking,
+            and Open Source contributions.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogCategories.map((category, index) => (
@@ -516,8 +516,8 @@ export default function App() {
             Other Life
           </h2>
           <p className="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">
-            Beyond code and computers, here's a glimpse into the other aspects of my life that inspire
-            and energize me.
+            Beyond code and computers, here's a glimpse into the other aspects of my life that
+            inspire and energize me.
           </p>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
@@ -584,12 +584,14 @@ export default function App() {
             <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
               <div className="flex items-center gap-4 mb-4">
                 <span className="text-4xl">🌱</span>
-                <h3 className="text-xl font-semibold text-gray-900">Permaculture & Livestock Rearing</h3>
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Permaculture & Livestock Rearing
+                </h3>
               </div>
               <p className="text-gray-600">
                 Practicing sustainable agriculture through permaculture principles and raising
-                livestock, connecting with nature and contributing to food security and environmental
-                stewardship.
+                livestock, connecting with nature and contributing to food security and
+                environmental stewardship.
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
