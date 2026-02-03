@@ -15,7 +15,7 @@ export default function App() {
   // Smooth scroll handler
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'projects', 'experience', 'contact']
+      const sections = ['hero', 'about', 'blog', 'experience', 'other-life', 'contact']
       const scrollPosition = window.scrollY + 150
 
       for (const section of sections) {
@@ -129,44 +129,72 @@ export default function App() {
     }
   }, [isMobile])
 
-  // Projects data
-  const projects = [
+  // Blog categories
+  const blogCategories = [
     {
-      id: 1,
-      title: 'OpenELIS-Global2',
+      title: 'Physical Intelligence',
       description:
-        'Contributing to an open-source laboratory information system used by healthcare facilities worldwide. Focus on secure data handling and workflow optimization.',
-      tags: ['Java', 'Spring Boot', 'Open Source', 'Healthcare IT'],
-      github: 'https://github.com/openelisglobal/openelisglobal-core',
-      demo: null,
-      thumbnail: '/letterB.jpg',
+        'Exploring the intersection of robotics, AI, and physical systems. Insights on building intelligent machines that interact with the real world.',
+      icon: '🤖',
     },
     {
-      id: 2,
-      title: 'GSoC 2025 Project',
+      title: 'Automation',
       description:
-        'Google Summer of Code 2025 project focusing on testing frameworks and quality assurance automation for large-scale healthcare systems.',
-      tags: ['Testing', 'QA Automation', 'Open Source', 'GSoC'],
-      github: null,
-      demo: null,
-      thumbnail: '/letterB.jpg',
+        'Best practices, tools, and strategies for automating software development, testing, and deployment pipelines.',
+      icon: '⚙️',
     },
     {
-      id: 3,
-      title: 'Testing Frameworks',
+      title: 'Cybersecurity',
       description:
-        'Development of comprehensive testing frameworks for ensuring code quality, security, and reliability in enterprise applications.',
-      tags: ['Testing', 'Java', 'CI/CD', 'Quality Assurance'],
-      github: null,
-      demo: null,
-      thumbnail: '/letterB.jpg',
+        'Security-first development practices, threat mitigation strategies, and building resilient systems.',
+      icon: '🔒',
+    },
+    {
+      title: 'Ethical Hacking',
+      description:
+        'Penetration testing, vulnerability assessment, and responsible disclosure practices for secure systems.',
+      icon: '🛡️',
+    },
+    {
+      title: 'Open Source Contributions',
+      description:
+        'Contributions to open-source projects, community engagement, and lessons learned from collaborative development.',
+      icon: '🌐',
+    },
+    {
+      title: 'Cloud Computing',
+      description:
+        'Cloud infrastructure, architecture patterns, scalability solutions, and best practices for deploying and managing applications in the cloud.',
+      icon: '☁️',
     },
   ]
 
   // Experience data
   const experiences = [
     {
-      title: 'Software Engineer | OpenELIS-Global2',
+      title: 'Software Developer',
+      company: 'Open Data Ensemble (ODE)',
+      period: 'November 2025 – Present',
+      description: [
+        'Developing scalable software solutions for data management and analytics',
+        'Implementing secure and efficient data processing systems',
+        'Collaborating with cross-functional teams to deliver high-quality products',
+        'Contributing to open data initiatives and platform development',
+      ],
+    },
+    {
+      title: 'Developers Team Lead',
+      company: 'Sapiens Solution',
+      period: 'November 2025 – Present',
+      description: [
+        'Leading development teams in building innovative software solutions',
+        'Architecting scalable systems with focus on security and performance',
+        'Mentoring developers and establishing best practices',
+        'Driving technical decisions and ensuring code quality standards',
+      ],
+    },
+    {
+      title: 'Open Source Contributor-QA',
       company: 'OpenELIS',
       period: 'June 2024 – Present',
       description: [
@@ -177,7 +205,7 @@ export default function App() {
       ],
     },
     {
-      title: 'Software Engineer | Open Source Contributor',
+      title: 'Open Source Contributor',
       company: 'OpenMRS',
       period: '2021 – Present',
       description: [
@@ -229,14 +257,14 @@ export default function App() {
                 About
               </a>
               <a
-                href="#projects"
+                href="#blog"
                 className={`text-sm font-medium transition-colors ${
-                  activeSection === 'projects'
+                  activeSection === 'blog'
                     ? 'text-gold border-b-2 border-gold'
                     : 'text-gray-700 hover:text-sky-blue'
                 }`}
               >
-                Projects
+                Blog
               </a>
               <a
                 href="#experience"
@@ -247,6 +275,16 @@ export default function App() {
                 }`}
               >
                 Experience
+              </a>
+              <a
+                href="#other-life"
+                className={`text-sm font-medium transition-colors ${
+                  activeSection === 'other-life'
+                    ? 'text-gold border-b-2 border-gold'
+                    : 'text-gray-700 hover:text-sky-blue'
+                }`}
+              >
+                Other Life
               </a>
               <a
                 href="#contact"
@@ -292,11 +330,11 @@ export default function App() {
                 About
               </a>
               <a
-                href="#projects"
+                href="#blog"
                 className="block text-gray-700 hover:text-sky-blue transition-colors"
                 onClick={handleNavClick}
               >
-                Projects
+                Blog
               </a>
               <a
                 href="#experience"
@@ -304,6 +342,13 @@ export default function App() {
                 onClick={handleNavClick}
               >
                 Experience
+              </a>
+              <a
+                href="#other-life"
+                className="block text-gray-700 hover:text-sky-blue transition-colors"
+                onClick={handleNavClick}
+              >
+                Other Life
               </a>
               <a
                 href="#contact"
@@ -335,19 +380,19 @@ export default function App() {
             <span className="font-bold">Bahati</span>
           </h1>
           <p className="text-xl sm:text-2xl md:text-3xl font-medium text-sky-blue mb-6">
-            Software Engineer | Cybersecurity Specialist
+            Physical Intelligence Engineer | Cybersecurity Professional
           </p>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Building secure, scalable applications with a passion for quality assurance, AI
-            innovation, and open-source contributions. CCNA, CyberOps, and Ethical Hacking
-            certified.
+            Engineering intelligent, secure, and scalable systems with a strong foundation in software
+            development, cybersecurity, and AI-driven innovation. Passionate about quality assurance,
+            automation, and impactful open-source contributions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#projects"
+              href="#blog"
               className="px-8 py-3 bg-sky-blue text-white rounded-lg font-semibold hover:bg-opacity-90 hover:outline hover:outline-2 hover:outline-gold transition-all shadow-lg"
             >
-              View Projects
+              View Blog
             </a>
             <a
               href="#contact"
@@ -367,20 +412,22 @@ export default function App() {
           </h2>
           <div className="max-w-3xl mx-auto">
             <p className="text-lg text-gray-600 mb-4">
-              I am a Software Engineer with expertise in building secure, scalable applications and
-              contributing to open-source projects. My approach combines clean architecture
-              principles, security-first development practices, and pragmatic problem-solving.
+              I am a Bachelor of Engineering (B.E.) student in Robotics and Artificial Intelligence with a
+              strong background in software engineering and cybersecurity. My work focuses on building
+              secure, scalable, and maintainable systems, combining engineering discipline with emerging
+              AI technologies.
             </p>
             <p className="text-lg text-gray-600 mb-4">
-              With professional certifications in Ethical Hacking, CyberOps, and CCNA, I bring a
-              comprehensive understanding of both software engineering and cybersecurity to deliver
-              robust, production-ready solutions.
+              I apply security-first development practices, clean architecture principles, and pragmatic
+              problem-solving to real-world systems. Alongside my academic training in robotics and AI, I
+              actively contribute to open-source projects and large-scale software platforms, including
+              healthcare systems used by millions globally.
             </p>
             <p className="text-lg text-gray-600 mb-6">
-              I specialize in full-stack development with a focus on creating maintainable
-              codebases, implementing security best practices, and collaborating effectively within
-              distributed teams. My experience includes contributing to large-scale open-source
-              healthcare systems that serve millions of users worldwide.
+              With professional certifications in Ethical Hacking, CyberOps, and CCNA, I bring a
+              well-rounded perspective that bridges intelligent systems, software engineering, and
+              cybersecurity. I am particularly interested in secure AI systems, automation, and resilient
+              infrastructure for mission-critical applications.
             </p>
             <div className="flex flex-wrap gap-3">
               <span className="px-4 py-2 bg-sky-blue/10 text-sky-blue rounded-full text-sm font-medium">
@@ -397,68 +444,34 @@ export default function App() {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 bg-white">
+      {/* Blog Section */}
+      <section id="blog" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-gray-900 mb-4 text-center">
-            Featured Projects
+            Blog
           </h2>
           <p className="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">
-            Here are some of my key projects showcasing problem-solving, security-first development,
-            and open-source contributions.
+            Sharing insights on Physical Intelligence, Automation, Cybersecurity, Ethical Hacking, and
+            Open Source contributions.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
+            {blogCategories.map((category, index) => (
               <div
-                key={project.id}
+                key={index}
                 className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-200 overflow-hidden"
               >
                 <div className="h-48 bg-gradient-to-br from-sky-blue/20 to-gold/20 flex items-center justify-center">
-                  {project.thumbnail ? (
-                    <img
-                      src={project.thumbnail}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <span className="text-6xl">🚀</span>
-                  )}
+                  <span className="text-6xl">{category.icon}</span>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{project.title}</h3>
-                  <p className="text-gray-600 mb-4 text-sm">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, index) => (
-                      <span
-                        key={index}
-                        className="px-2 py-1 bg-sky-blue/10 text-sky-blue rounded text-xs font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-3">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex-1 px-4 py-2 bg-sky-blue text-white rounded-lg text-center text-sm font-medium hover:bg-opacity-90 transition-colors"
-                      >
-                        GitHub
-                      </a>
-                    )}
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex-1 px-4 py-2 bg-gold text-white rounded-lg text-center text-sm font-medium hover:bg-opacity-90 transition-colors"
-                      >
-                        Live Demo
-                      </a>
-                    )}
-                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{category.title}</h3>
+                  <p className="text-gray-600 mb-4 text-sm">{category.description}</p>
+                  <a
+                    href="#blog"
+                    className="inline-block px-4 py-2 bg-sky-blue text-white rounded-lg text-sm font-medium hover:bg-opacity-90 transition-colors"
+                  >
+                    Read More →
+                  </a>
                 </div>
               </div>
             ))}
@@ -492,6 +505,104 @@ export default function App() {
                 </ul>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Other Life Section */}
+      <section id="other-life" className="py-20 bg-gradient-to-br from-gray-50 to-sky-blue/5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-display font-bold text-gray-900 mb-4 text-center">
+            Other Life
+          </h2>
+          <p className="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">
+            Beyond code and computers, here's a glimpse into the other aspects of my life that inspire
+            and energize me.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-4xl">✝️</span>
+                <h3 className="text-xl font-semibold text-gray-900">Faith & Belief</h3>
+              </div>
+              <p className="text-gray-600">
+                I am a believer in Jesus Christ, the risen Savior of all, including you. As a
+                Seventh-Day Adventist, my faith guides my values, principles, and approach to life,
+                work, and service to others.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-4xl">🎨</span>
+                <h3 className="text-xl font-semibold text-gray-900">Creative Pursuits</h3>
+              </div>
+              <p className="text-gray-600">
+                Exploring creativity through various mediums, finding inspiration in art, music, and
+                design that fuels innovation in my technical work.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-4xl">🌍</span>
+                <h3 className="text-xl font-semibold text-gray-900">Travel & Culture</h3>
+              </div>
+              <p className="text-gray-600">
+                Discovering new places, cultures, and perspectives that broaden my worldview and
+                enhance my understanding of global technology needs.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-4xl">📚</span>
+                <h3 className="text-xl font-semibold text-gray-900">Reading & Learning</h3>
+              </div>
+              <p className="text-gray-600">
+                Continuous learning beyond technology—exploring philosophy, history, science, and
+                literature that shape my thinking and approach to problem-solving.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-4xl">🏃</span>
+                <h3 className="text-xl font-semibold text-gray-900">Fitness & Wellness</h3>
+              </div>
+              <p className="text-gray-600">
+                Maintaining physical and mental wellness through regular exercise, mindfulness, and
+                activities that keep me balanced and energized.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-4xl">🎵</span>
+                <h3 className="text-xl font-semibold text-gray-900">Music & Entertainment</h3>
+              </div>
+              <p className="text-gray-600">
+                Enjoying music, films, and entertainment that provide relaxation and creative
+                inspiration during breaks from coding.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-4xl">🌱</span>
+                <h3 className="text-xl font-semibold text-gray-900">Permaculture & Livestock Rearing</h3>
+              </div>
+              <p className="text-gray-600">
+                Practicing sustainable agriculture through permaculture principles and raising
+                livestock, connecting with nature and contributing to food security and environmental
+                stewardship.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-4xl">⭐</span>
+                <h3 className="text-xl font-semibold text-gray-900">Star Gazing</h3>
+              </div>
+              <p className="text-gray-600">
+                Observing the night sky, exploring constellations, and marveling at the cosmos. Star
+                gazing provides moments of wonder, reflection, and connection with the vast universe
+                beyond our world.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -542,18 +653,6 @@ export default function App() {
                   <div>
                     <p className="font-semibold text-gray-900">LinkedIn</p>
                     <p className="text-gray-600 text-sm">brian-patrick-bahati</p>
-                  </div>
-                </a>
-                <a
-                  href="https://twitter.com/Bahati308"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-3 p-4 bg-gradient-to-br from-sky-blue/10 to-gold/10 rounded-lg hover:shadow-md transition-shadow"
-                >
-                  <span className="text-2xl">🐦</span>
-                  <div>
-                    <p className="font-semibold text-gray-900">Twitter/X</p>
-                    <p className="text-gray-600 text-sm">@Bahati308</p>
                   </div>
                 </a>
               </div>
@@ -694,15 +793,6 @@ export default function App() {
               aria-label="LinkedIn"
             >
               LinkedIn
-            </a>
-            <a
-              href="https://twitter.com/Bahati308"
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-400 hover:text-gold transition-colors"
-              aria-label="Twitter/X"
-            >
-              Twitter/X
             </a>
           </div>
         </div>
