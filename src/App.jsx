@@ -365,41 +365,51 @@ export default function App() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-blue/10 via-white to-gold/10 pt-16"
+        className="min-h-screen flex items-center pt-16 relative bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/images/background.webp)',
+          backgroundPosition: 'top 64px center',
+        }}
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-8">
-            <img
-              src="/letterB.jpg"
-              alt="Brian Patrick Bahati"
-              className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-gold shadow-lg object-cover"
-            />
-          </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display text-gray-900 mb-4">
-            <span className="font-normal">Brian Patrick</span>{' '}
-            <span className="font-bold">Bahati</span>
-          </h1>
-          <p className="text-xl sm:text-2xl md:text-3xl font-medium text-sky-blue mb-6">
-            Physical Intelligence Engineer | Cybersecurity Professional
-          </p>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Engineering intelligent, secure, and scalable systems with a strong foundation in
-            software development, cybersecurity, and AI-driven innovation. Passionate about quality
-            assurance, automation, and impactful open-source contributions.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#blog"
-              className="px-8 py-3 bg-sky-blue text-white rounded-lg font-semibold hover:bg-opacity-90 hover:outline hover:outline-2 hover:outline-gold transition-all shadow-lg"
-            >
-              View Blog
-            </a>
-            <a
-              href="#contact"
-              className="px-8 py-3 bg-white text-sky-blue border-2 border-sky-blue rounded-lg font-semibold hover:bg-sky-blue hover:text-white transition-all shadow-lg"
-            >
-              Get In Touch
-            </a>
+        {/* Gradient overlay - darker on left for text, lighter on right for image */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent"></div>
+
+        {/* Content Container */}
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative z-10">
+          <div className="max-w-2xl">
+            {/* Name */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display text-gray-900 mb-4 md:mb-6 leading-tight">
+              <span className="font-normal">Brian Patrick</span>{' '}
+              <span className="font-bold">Bahati</span>
+            </h1>
+
+            {/* Title */}
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-sky-blue mb-6 md:mb-8 leading-relaxed">
+              Robotics & AI Engineer | Ethical Hacker
+            </p>
+
+            {/* Description */}
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-8 md:mb-10 max-w-xl leading-relaxed">
+              Engineering intelligent, secure, and scalable systems with a strong foundation in
+              software development, cybersecurity, and AI-driven innovation. Passionate about
+              quality assurance, automation, and impactful open-source contributions.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+              <a
+                href="#blog"
+                className="px-6 md:px-8 py-3 md:py-4 bg-sky-blue text-white rounded-lg font-semibold hover:bg-opacity-90 hover:outline hover:outline-2 hover:outline-gold transition-all shadow-lg text-center text-sm md:text-base"
+              >
+                View Blog
+              </a>
+              <a
+                href="#contact"
+                className="px-6 md:px-8 py-3 md:py-4 bg-white text-sky-blue border-2 border-sky-blue rounded-lg font-semibold hover:bg-sky-blue hover:text-white transition-all shadow-lg text-center text-sm md:text-base"
+              >
+                Get In Touch
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -411,24 +421,68 @@ export default function App() {
             About Me
           </h2>
           <div className="max-w-3xl mx-auto">
-            <p className="text-lg text-gray-600 mb-4">
-              I am a Bachelor of Engineering (B.E.) student in Robotics and Artificial Intelligence
-              with a strong background in software engineering and cybersecurity. My work focuses on
-              building secure, scalable, and maintainable systems, combining engineering discipline
-              with emerging AI technologies.
-            </p>
-            <p className="text-lg text-gray-600 mb-4">
-              I apply security-first development practices, clean architecture principles, and
-              pragmatic problem-solving to real-world systems. Alongside my academic training in
-              robotics and AI, I actively contribute to open-source projects and large-scale
-              software platforms, including healthcare systems used by millions globally.
-            </p>
             <p className="text-lg text-gray-600 mb-6">
-              With professional certifications in Ethical Hacking, CyberOps, and CCNA, I bring a
-              well-rounded perspective that bridges intelligent systems, software engineering, and
-              cybersecurity. I am particularly interested in secure AI systems, automation, and
-              resilient infrastructure for mission-critical applications.
+              I am currently pursuing a Bachelor of Engineering (B.E.) in Robotics and Artificial
+              Intelligence at ISBAT University, Kampala, Uganda. My educational journey has been
+              marked by continuous learning and professional development across multiple
+              institutions in Uganda.
             </p>
+
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Education & Certifications
+              </h3>
+              <div className="space-y-4">
+                <div className="border-l-4 border-sky-blue pl-4">
+                  <p className="font-semibold text-gray-900">
+                    Bachelor of Engineering in Robotics and Artificial Intelligence
+                  </p>
+                  <p className="text-gray-600">ISBAT University, Kampala, Uganda</p>
+                  <p className="text-sm text-gray-500">In Progress</p>
+                </div>
+
+                <div className="border-l-4 border-sky-blue pl-4">
+                  <p className="font-semibold text-gray-900">
+                    CyberOps & Ethical Hacking Certifications
+                  </p>
+                  <p className="text-gray-600">Makerere University, Kampala, Uganda</p>
+                  <p className="text-sm text-gray-500">2024</p>
+                </div>
+
+                <div className="border-l-4 border-sky-blue pl-4">
+                  <p className="font-semibold text-gray-900">CCNA Certification</p>
+                  <p className="text-gray-600">Bugema University, Uganda</p>
+                  <p className="text-sm text-gray-500">2023</p>
+                </div>
+
+                <div className="border-l-4 border-sky-blue pl-4">
+                  <p className="font-semibold text-gray-900">Advanced Level (A-Level)</p>
+                  <p className="text-gray-600">Bugema Adventist Secondary School, Uganda</p>
+                  <p className="text-sm text-gray-500">2018</p>
+                </div>
+
+                <div className="border-l-4 border-sky-blue pl-4">
+                  <p className="font-semibold text-gray-900">Ordinary Level (O-Level)</p>
+                  <p className="text-gray-600">Bugema Adventist Secondary School, Uganda</p>
+                  <p className="text-sm text-gray-500">2016</p>
+                </div>
+
+                <div className="border-l-4 border-sky-blue pl-4">
+                  <p className="font-semibold text-gray-900">Primary Education</p>
+                  <p className="text-gray-600">Makerere C.O.U Primary School, Uganda</p>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-lg text-gray-600 mb-6">
+              My work focuses on building secure, scalable, and maintainable systems, combining
+              engineering discipline with emerging AI technologies. I apply security-first
+              development practices, clean architecture principles, and pragmatic problem-solving to
+              real-world systems. Alongside my academic training, I actively contribute to
+              open-source projects and large-scale software platforms, including healthcare systems
+              used by millions globally.
+            </p>
+
             <div className="flex flex-wrap gap-3">
               <span className="px-4 py-2 bg-sky-blue/10 text-sky-blue rounded-full text-sm font-medium">
                 CCNA Certified
@@ -460,9 +514,6 @@ export default function App() {
                 key={index}
                 className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-200 overflow-hidden"
               >
-                <div className="h-48 bg-gradient-to-br from-sky-blue/20 to-gold/20 flex items-center justify-center">
-                  <span className="text-6xl">{category.icon}</span>
-                </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">{category.title}</h3>
                   <p className="text-gray-600 mb-4 text-sm">{category.description}</p>
@@ -521,10 +572,7 @@ export default function App() {
           </p>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-4xl">✝️</span>
-                <h3 className="text-xl font-semibold text-gray-900">Faith & Belief</h3>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Faith & Belief</h3>
               <p className="text-gray-600">
                 I am a believer in Jesus Christ, the risen Savior of all, including you. As a
                 Seventh-Day Adventist, my faith guides my values, principles, and approach to life,
@@ -532,62 +580,44 @@ export default function App() {
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-4xl">🎨</span>
-                <h3 className="text-xl font-semibold text-gray-900">Creative Pursuits</h3>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Creative Pursuits</h3>
               <p className="text-gray-600">
                 Exploring creativity through various mediums, finding inspiration in art, music, and
                 design that fuels innovation in my technical work.
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-4xl">🌍</span>
-                <h3 className="text-xl font-semibold text-gray-900">Travel & Culture</h3>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Travel & Culture</h3>
               <p className="text-gray-600">
                 Discovering new places, cultures, and perspectives that broaden my worldview and
                 enhance my understanding of global technology needs.
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-4xl">📚</span>
-                <h3 className="text-xl font-semibold text-gray-900">Reading & Learning</h3>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Reading & Learning</h3>
               <p className="text-gray-600">
                 Continuous learning beyond technology—exploring philosophy, history, science, and
                 literature that shape my thinking and approach to problem-solving.
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-4xl">🏃</span>
-                <h3 className="text-xl font-semibold text-gray-900">Fitness & Wellness</h3>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Fitness & Wellness</h3>
               <p className="text-gray-600">
                 Maintaining physical and mental wellness through regular exercise, mindfulness, and
                 activities that keep me balanced and energized.
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-4xl">🎵</span>
-                <h3 className="text-xl font-semibold text-gray-900">Music & Entertainment</h3>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Music & Entertainment</h3>
               <p className="text-gray-600">
                 Enjoying music, films, and entertainment that provide relaxation and creative
                 inspiration during breaks from coding.
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-4xl">🌱</span>
-                <h3 className="text-xl font-semibold text-gray-900">
-                  Permaculture & Livestock Rearing
-                </h3>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Permaculture & Livestock Rearing
+              </h3>
               <p className="text-gray-600">
                 Practicing sustainable agriculture through permaculture principles and raising
                 livestock, connecting with nature and contributing to food security and
@@ -595,10 +625,7 @@ export default function App() {
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-4xl">⭐</span>
-                <h3 className="text-xl font-semibold text-gray-900">Star Gazing</h3>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Star Gazing</h3>
               <p className="text-gray-600">
                 Observing the night sky, exploring constellations, and marveling at the cosmos. Star
                 gazing provides moments of wonder, reflection, and connection with the vast universe
@@ -625,36 +652,30 @@ export default function App() {
               <div className="space-y-4">
                 <a
                   href="mailto:bahatibrianp@gmail.com"
-                  className="flex items-center gap-3 p-4 bg-gradient-to-br from-sky-blue/10 to-gold/10 rounded-lg hover:shadow-md transition-shadow"
+                  className="flex items-center p-4 bg-gradient-to-br from-sky-blue/10 to-gold/10 rounded-lg hover:shadow-md transition-shadow"
                 >
-                  <span className="text-2xl">📧</span>
                   <div>
                     <p className="font-semibold text-gray-900">Email</p>
-                    <p className="text-gray-600 text-sm">bahatibrianp@gmail.com</p>
                   </div>
                 </a>
                 <a
                   href="https://github.com/Bahati308"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-3 p-4 bg-gradient-to-br from-sky-blue/10 to-gold/10 rounded-lg hover:shadow-md transition-shadow"
+                  className="flex items-center p-4 bg-gradient-to-br from-sky-blue/10 to-gold/10 rounded-lg hover:shadow-md transition-shadow"
                 >
-                  <span className="text-2xl">💻</span>
                   <div>
                     <p className="font-semibold text-gray-900">GitHub</p>
-                    <p className="text-gray-600 text-sm">@Bahati308</p>
                   </div>
                 </a>
                 <a
                   href="https://www.linkedin.com/in/brian-patrick-bahati"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-3 p-4 bg-gradient-to-br from-sky-blue/10 to-gold/10 rounded-lg hover:shadow-md transition-shadow"
+                  className="flex items-center p-4 bg-gradient-to-br from-sky-blue/10 to-gold/10 rounded-lg hover:shadow-md transition-shadow"
                 >
-                  <span className="text-2xl">💼</span>
                   <div>
                     <p className="font-semibold text-gray-900">LinkedIn</p>
-                    <p className="text-gray-600 text-sm">brian-patrick-bahati</p>
                   </div>
                 </a>
               </div>
