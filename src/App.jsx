@@ -372,7 +372,7 @@ export default function App() {
         }}
       >
         {/* Gradient overlay - darker on left for text, lighter on right for image */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/10 to-transparent"></div>
 
         {/* Content Container */}
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative z-10">
